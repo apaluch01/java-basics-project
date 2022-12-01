@@ -13,12 +13,6 @@ public class Curriculum {
         this.courses = builder.courses;
         this.hours = getFullDuration(courses);
     }
-
-    //public Curriculum(String title, ArrayList<Course> courses){
-      //  this.title = title;
-        //this.courses = courses;
-        //this.hours = getFullDuration(courses);
-    //}
     
     private int getFullDuration(ArrayList<Course> courses){
         int sum = 0;
