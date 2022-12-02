@@ -1,8 +1,10 @@
+import calculator.WorkingHoursCalculator;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.ArrayList;
 
 public class CalculatorDaysTest {
     WorkingHoursCalculator calculator = new WorkingHoursCalculator();
@@ -39,4 +41,19 @@ public class CalculatorDaysTest {
                 LocalDate.of(2022, Month.DECEMBER, 2)), 0);
     }
 
+    @Test
+    public void daysShouldRemainAsZero() {
+        ArrayList<Integer> checker = new ArrayList<>();
+        checker.add(0, 0);
+        checker.add(1, 7);
+        Assert.assertEquals(calculator.calculateDaysAndHours(7, 0), checker);
+    }
+
+    @Test
+    public void dayDifferenceShouldBeAbsolute() {
+        Assert.assertEquals(calculator.getWorkingDaysDifference(LocalDate.of(2022, 12, 1),
+                LocalDate.of(2022, 12, 2)), 1);
+        Assert.assertEquals(calculator.getWorkingDaysDifference(LocalDate.of(2022, 12, 2),
+                LocalDate.of(2022, 12, 1)), 1);
+    }
 }
