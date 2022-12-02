@@ -1,16 +1,19 @@
+package calculator;
+
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
+import static java.lang.Math.abs;
 import static java.time.temporal.ChronoUnit.DAYS;
 
 public class WorkingHoursCalculator {
-    static final int HOURS = 8;
-    static final LocalTime START = LocalTime.of(10, 0);
-    static final LocalTime END = LocalTime.of(18, 0);
+    public static final int HOURS = 8;
+    public static final LocalTime START = LocalTime.of(10, 0);
+    public static final LocalTime END = LocalTime.of(18, 0);
 
-    public int getWorkingHoursDifference(LocalTime currentTime){
+    public int getCurrentDayHours(LocalTime currentTime){
         int difference = 0;
 
         if (currentTime.isAfter(START) && currentTime.isBefore(END)){
@@ -20,6 +23,12 @@ public class WorkingHoursCalculator {
         }
 
         return difference;
+    }
+
+    public int getWorkingHoursDifference(LocalTime reportTime, LocalTime courseTime){
+        long difference = abs(reportTime.getHour() - courseTime.getHour());
+
+        return (int) difference;
     }
 
     public int getWorkingDaysDifference(LocalDate reportDate, LocalDate startDate){
@@ -33,7 +42,9 @@ public class WorkingHoursCalculator {
             courseDays = courseDays.plusDays(1);
         }
 
-        return (int) difference;
+
+
+        return (int) abs(difference);
     }
 
     public ArrayList<Integer> calculateDaysAndHours(int hours, int days) {
