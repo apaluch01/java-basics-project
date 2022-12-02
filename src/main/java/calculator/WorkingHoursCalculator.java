@@ -1,6 +1,7 @@
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 import static java.time.temporal.ChronoUnit.DAYS;
 
@@ -21,11 +22,11 @@ public class WorkingHoursCalculator {
         return difference;
     }
 
-    public int getWorkingDaysDifference(LocalDate currentDate, LocalDate startDate){
-        long difference = DAYS.between(startDate, currentDate);
+    public int getWorkingDaysDifference(LocalDate reportDate, LocalDate startDate){
+        long difference = DAYS.between(startDate, reportDate);
         LocalDate courseDays = startDate;
 
-        while (courseDays.isBefore(currentDate)){
+        while (courseDays.isBefore(reportDate)){
             if (courseDays.getDayOfWeek() == DayOfWeek.SATURDAY || courseDays.getDayOfWeek() == DayOfWeek.SUNDAY){
                 difference = difference - 1;
             }
@@ -35,4 +36,17 @@ public class WorkingHoursCalculator {
         return (int) difference;
     }
 
+    public ArrayList<Integer> calculateDaysAndHours(int hours, int days) {
+        ArrayList<Integer> result = new ArrayList<Integer>();
+
+        if (hours == 8){
+            hours = 0;
+            days = days + 1;
+        }
+
+        result.add(0, days);
+        result.add(1, hours);
+
+        return result;
+    }
 }

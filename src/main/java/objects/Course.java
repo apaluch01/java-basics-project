@@ -1,3 +1,5 @@
+package objects;
+
 import lombok.Getter;
 
 @Getter
