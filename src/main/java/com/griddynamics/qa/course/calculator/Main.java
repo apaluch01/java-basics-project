@@ -1,4 +1,6 @@
-import reporting.ReportGenerator;
+package com.griddynamics.qa.course.calculator;
+
+import com.griddynamics.qa.course.calculator.reporting.ReportGenerator;
 
 import java.util.Scanner;
 

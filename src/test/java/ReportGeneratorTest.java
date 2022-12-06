@@ -1,9 +1,9 @@
-import objects.Course;
-import objects.Curriculum;
-import objects.Student;
+import com.griddynamics.qa.course.calculator.objects.Course;
+import com.griddynamics.qa.course.calculator.objects.Curriculum;
+import com.griddynamics.qa.course.calculator.objects.Student;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import reporting.ReportGenerator;
+import com.griddynamics.qa.course.calculator.reporting.ReportGenerator;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

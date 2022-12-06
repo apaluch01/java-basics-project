@@ -1,4 +1,4 @@
-package objects;
+package com.griddynamics.qa.course.calculator.objects;
 
 import lombok.Getter;
 

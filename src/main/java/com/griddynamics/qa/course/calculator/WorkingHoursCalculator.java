@@ -1,4 +1,4 @@
-package calculator;
+package com.griddynamics.qa.course.calculator;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
