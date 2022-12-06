@@ -4,6 +4,7 @@ import lombok.Getter;
 
 @Getter
 public class Course {
+
     private String title;
     private int hours;
 

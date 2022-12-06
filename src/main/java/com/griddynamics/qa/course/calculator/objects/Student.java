@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 
 @Getter
 public class Student {
+    
     private String fullName;
     private Curriculum curriculum;
     private LocalDateTime startingDate;

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 @Getter
 public class Curriculum {
+
     private String title;
     private ArrayList<Course> courses;
     private int hours;

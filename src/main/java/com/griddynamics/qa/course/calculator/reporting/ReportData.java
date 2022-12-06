@@ -16,6 +16,7 @@ import java.util.Objects;
 
 @Getter
 public class ReportData {
+
     private final List<Student> students = new ArrayList<Student>();
     private LocalDateTime reportDateTime;
     private LocalDate reportDate;

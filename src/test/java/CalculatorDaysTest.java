@@ -7,6 +7,7 @@ import java.time.Month;
 import java.util.ArrayList;
 
 public class CalculatorDaysTest {
+
     WorkingHoursCalculator calculator = new WorkingHoursCalculator();
 
     @Test

@@ -9,6 +9,7 @@ import static java.lang.Math.abs;
 import static java.time.temporal.ChronoUnit.DAYS;
 
 public class WorkingHoursCalculator {
+
     public static final int HOURS = 8;
     public static final LocalTime START = LocalTime.of(10, 0);
     public static final LocalTime END = LocalTime.of(18, 0);

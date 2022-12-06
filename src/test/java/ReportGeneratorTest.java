@@ -11,6 +11,7 @@ import java.time.LocalTime;
 import java.time.Month;
 
 public class ReportGeneratorTest {
+
     ReportGenerator generator = new ReportGenerator("2020-06-08 15:00", "o");
 
     Course course1 = new Course("Java", 16);
