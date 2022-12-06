@@ -1,9 +1,9 @@
 package com.griddynamics.qa.course.calculator.reporting;
 
 import lombok.Getter;
-import com.griddynamics.qa.course.calculator.objects.Course;
-import com.griddynamics.qa.course.calculator.objects.Curriculum;
-import com.griddynamics.qa.course.calculator.objects.Student;
+import com.griddynamics.qa.course.calculator.object.Course;
+import com.griddynamics.qa.course.calculator.object.Curriculum;
+import com.griddynamics.qa.course.calculator.object.Student;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

@@ -1,7 +1,7 @@
 package com.griddynamics.qa.course.calculator.reporting;
 
 import com.griddynamics.qa.course.calculator.WorkingHoursCalculator;
-import com.griddynamics.qa.course.calculator.objects.Student;
+import com.griddynamics.qa.course.calculator.object.Student;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
