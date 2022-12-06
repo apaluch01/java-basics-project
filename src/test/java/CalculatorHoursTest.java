@@ -9,7 +9,7 @@ public class CalculatorHoursTest {
     WorkingHoursCalculator calculator = new WorkingHoursCalculator();
 
     @Test
-    public void returnZeroBeforeStartingHour(){
+    public void returnZeroBeforeStartingHour() {
         Assert.assertEquals(calculator.getCurrentDayHours(LocalTime.of(0, 0)), 0);
         Assert.assertEquals(calculator.getCurrentDayHours(LocalTime.of(9, 59, 59)), 0);
         Assert.assertEquals(calculator.getCurrentDayHours(LocalTime.of(10, 0)), 0);

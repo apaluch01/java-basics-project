@@ -14,30 +14,31 @@ public class WorkingHoursCalculator {
     public static final LocalTime START = LocalTime.of(10, 0);
     public static final LocalTime END = LocalTime.of(18, 0);
 
-    public int getCurrentDayHours(LocalTime currentTime){
+    public int getCurrentDayHours(LocalTime currentTime) {
         int difference = 0;
 
-        if (currentTime.isAfter(START) && currentTime.isBefore(END)){
+        if (currentTime.isAfter(START) && currentTime.isBefore(END)) {
             difference = currentTime.minusHours(START.getHour()).getHour();
-        } else if (currentTime.isAfter(END) || currentTime.equals(END)) {
+        }
+        else if (currentTime.isAfter(END) || currentTime.equals(END)) {
             difference = HOURS;
         }
 
         return difference;
     }
 
-    public int getWorkingHoursDifference(LocalTime reportTime, LocalTime courseTime){
+    public int getWorkingHoursDifference(LocalTime reportTime, LocalTime courseTime) {
         long difference = abs(reportTime.getHour() - courseTime.getHour());
 
         return (int) difference;
     }
 
-    public int getWorkingDaysDifference(LocalDate reportDate, LocalDate startDate){
+    public int getWorkingDaysDifference(LocalDate reportDate, LocalDate startDate) {
         long difference = DAYS.between(startDate, reportDate);
         LocalDate courseDays = startDate;
 
         while (courseDays.isBefore(reportDate)){
-            if (courseDays.getDayOfWeek() == DayOfWeek.SATURDAY || courseDays.getDayOfWeek() == DayOfWeek.SUNDAY){
+            if (courseDays.getDayOfWeek() == DayOfWeek.SATURDAY || courseDays.getDayOfWeek() == DayOfWeek.SUNDAY) {
                 difference = difference - 1;
             }
             courseDays = courseDays.plusDays(1);
@@ -51,7 +52,7 @@ public class WorkingHoursCalculator {
     public ArrayList<Integer> calculateDaysAndHours(int hours, int days) {
         ArrayList<Integer> result = new ArrayList<Integer>();
 
-        if (hours == 8){
+        if (hours == 8) {
             hours = 0;
             days = days + 1;
         }

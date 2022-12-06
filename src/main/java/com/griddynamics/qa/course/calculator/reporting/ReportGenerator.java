@@ -29,11 +29,11 @@ public class ReportGenerator extends ReportData {
     }
 
 
-    public List<String> getReport(){
+    public List<String> getReport() {
         List<String> result = new ArrayList<>();
         int hoursRemaining;
 
-        if (isShort()){
+        if (isShort()) {
             System.out.println(getShortReportString());
             for (Student student : getStudents()) {
                 hoursRemaining = hoursRemaining(student);
@@ -52,7 +52,7 @@ public class ReportGenerator extends ReportData {
         return result;
     }
 
-    private String generateShortReport(Student student, int hoursRemaining){
+    private String generateShortReport(Student student, int hoursRemaining) {
         StringBuilder result = new StringBuilder();
         ArrayList<Integer> timeDifference = timeDifference(student);
 
@@ -61,7 +61,7 @@ public class ReportGenerator extends ReportData {
 
         if (hoursRemaining <= 0) {
             result.append("Training completed. ");
-            if (timeDifference.get(0) != 0){
+            if (timeDifference.get(0) != 0) {
                 result.append(timeDifference.get(0)).append(" d ").append(timeDifference.get(1)).
                         append(" hours have passed since the end.");
             }
@@ -71,7 +71,7 @@ public class ReportGenerator extends ReportData {
         }
         else {
             result.append("Training is not finished. ");
-            if (timeDifference.get(0) != 0){
+            if (timeDifference.get(0) != 0) {
                 result.append(timeDifference.get(0)).append(" d ").append(timeDifference.get(1)).
                         append(" hours are left until the end.");
             }
@@ -95,7 +95,7 @@ public class ReportGenerator extends ReportData {
 
         if (hoursRemaining <= 0) {
             result.append("Training completed. ");
-            if (timeDifference.get(0) != 0){
+            if (timeDifference.get(0) != 0) {
                 result.append(timeDifference.get(0)).append(" d ").append(timeDifference.get(1)).
                         append(" hours have passed since the end.\n");
             }
@@ -105,7 +105,7 @@ public class ReportGenerator extends ReportData {
         }
         else {
             result.append("Training is not finished. ");
-            if (timeDifference.get(0) != 0){
+            if (timeDifference.get(0) != 0) {
                 result.append(timeDifference.get(0)).append(" d ").append(timeDifference.get(1)).
                         append(" hours are left until the end.\n");
             }
@@ -117,7 +117,7 @@ public class ReportGenerator extends ReportData {
         return result.toString();
     }
 
-    public int hoursRemaining(Student student){
+    public int hoursRemaining(Student student) {
         int required = student.getCurriculum().getHours();
 
         LocalDate reportDate = getReportDate();
@@ -145,7 +145,7 @@ public class ReportGenerator extends ReportData {
         int hours = student.getCurriculum().getHours() % WorkingHoursCalculator.HOURS;
         int days = student.getCurriculum().getHours() / WorkingHoursCalculator.HOURS;
 
-        if (hours == 0){
+        if (hours == 0) {
             hours = 8;
             days = days + 1;
         }
@@ -153,9 +153,10 @@ public class ReportGenerator extends ReportData {
         LocalTime finishTime = student.getStartingDate().toLocalTime().plusHours(hours);
         LocalDate finishDate = student.getStartingDate().toLocalDate().plusDays(days);
 
-        if (finishDate.getDayOfWeek() == DayOfWeek.SATURDAY){
+        if (finishDate.getDayOfWeek() == DayOfWeek.SATURDAY) {
             finishDate = finishDate.plusDays(2);
-        } else if (finishDate.getDayOfWeek() == DayOfWeek.SUNDAY){
+        }
+        else if (finishDate.getDayOfWeek() == DayOfWeek.SUNDAY) {
             finishDate = finishDate.plusDays(1);
         }
 

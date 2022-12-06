@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         ReportGenerator generator;
 
         Scanner input = new Scanner(System.in);

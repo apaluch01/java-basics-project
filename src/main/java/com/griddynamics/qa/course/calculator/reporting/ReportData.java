@@ -31,7 +31,7 @@ public class ReportData {
         this.reportTime = reportDateTime.toLocalTime();
 
 
-        if (Objects.equals(type, "0") || Objects.equals(type, "")){
+        if (Objects.equals(type, "0") || Objects.equals(type, "")) {
             isShort = true;
         }
 

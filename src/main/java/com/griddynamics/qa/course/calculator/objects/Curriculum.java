@@ -11,13 +11,13 @@ public class Curriculum {
     private ArrayList<Course> courses;
     private int hours;
 
-    public Curriculum(CurriculumBuilder builder){
+    public Curriculum(CurriculumBuilder builder) {
         this.title = builder.title;
         this.courses = builder.courses;
         this.hours = getFullDuration(courses);
     }
     
-    private int getFullDuration(ArrayList<Course> courses){
+    private int getFullDuration(ArrayList<Course> courses) {
         int sum = 0;
 
         for (Course course : courses) {
@@ -28,7 +28,7 @@ public class Curriculum {
     }
 
     @Getter
-    public static class CurriculumBuilder{
+    public static class CurriculumBuilder {
         private String title;
         private ArrayList<Course> courses = new ArrayList<Course>();
         private int hours;
