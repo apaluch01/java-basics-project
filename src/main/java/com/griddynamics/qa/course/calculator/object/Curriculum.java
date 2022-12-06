@@ -8,9 +8,9 @@ import java.util.List;
 @Getter
 public class Curriculum {
 
-    private String title;
-    private List<Course> courses;
-    private int hours;
+    private final String title;
+    private final List<Course> courses;
+    private final int hours;
 
     public Curriculum(CurriculumBuilder builder) {
         this.title = builder.title;

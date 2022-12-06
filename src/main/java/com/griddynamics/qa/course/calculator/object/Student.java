@@ -9,12 +9,12 @@ import java.time.LocalDateTime;
 public class Student {
 
     @NonNull
-    private String firstName;
+    private final String firstName;
     @NonNull
-    private String lastName;
+    private final String lastName;
     @NonNull
-    private Curriculum curriculum;
+    private final Curriculum curriculum;
     @NonNull
-    private LocalDateTime startingDate;
+    private final LocalDateTime startingDate;
 
 }

@@ -91,8 +91,8 @@ public class ReportGenerator extends ReportData {
                 append(WorkingHoursCalculator.START.getHour()).append("-").
                 append(WorkingHoursCalculator.END.getHour()).append(" working hours\n").
                 append(student.getCurriculum().getTitle()).append("\n").append(student.getCurriculum().getHours()).
-                append(" hours total\nStart: ").append(student.getStartingDate().format(formatter)).
-                append("\nFinish: ").append(getFinishDateTime(student).format(formatter)).append("\n");
+                append(" hours total\nStart: ").append(student.getStartingDate().format(getFormatter())).
+                append("\nFinish: ").append(getFinishDateTime(student).format(getFormatter())).append("\n");
 
         if (hoursRemaining <= 0) {
             result.append("Training completed. ");

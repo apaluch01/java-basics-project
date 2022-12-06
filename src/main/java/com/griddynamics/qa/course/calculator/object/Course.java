@@ -7,8 +7,8 @@ import lombok.NonNull;
 public class Course {
 
     @NonNull
-    private String title;
+    private final String title;
     @NonNull
-    private int hours;
+    private final int hours;
 
 }

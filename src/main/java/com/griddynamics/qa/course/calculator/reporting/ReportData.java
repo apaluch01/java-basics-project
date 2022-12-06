@@ -22,7 +22,7 @@ public class ReportData {
     private LocalDate reportDate;
     private LocalTime reportTime;
     private boolean isShort = false;
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
     public void loadReportData(String stringDateTime, String type) {
         reportDateTime = LocalDateTime.parse(stringDateTime, formatter);
