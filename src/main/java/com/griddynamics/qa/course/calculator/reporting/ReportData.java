@@ -48,9 +48,9 @@ public class ReportData {
         Curriculum curriculum2 = new Curriculum.CurriculumBuilder().title("AQE").
                 courses(course4).courses(course5).courses(course6).build();
 
-        Student student1 = new Student("Ivanov Ivan", curriculum1,
+        Student student1 = new Student("Ivan", "Ivanov", curriculum1,
                 LocalDateTime.of(2020, Month.JUNE, 1, 10, 0));
-        Student student2 = new Student("Sidorov Ivan", curriculum2,
+        Student student2 = new Student("Ivan", "Sidorov", curriculum2,
                 LocalDateTime.of(2020, Month.JUNE, 1, 10, 0));
 
         this.students.add(student1);

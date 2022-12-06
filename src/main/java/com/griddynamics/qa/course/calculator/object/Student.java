@@ -9,7 +9,9 @@ import java.time.LocalDateTime;
 public class Student {
 
     @NonNull
-    private String fullName;
+    private String firstName;
+    @NonNull
+    private String lastName;
     @NonNull
     private Curriculum curriculum;
     @NonNull

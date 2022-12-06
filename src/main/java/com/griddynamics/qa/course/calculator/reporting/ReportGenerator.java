@@ -56,7 +56,7 @@ public class ReportGenerator extends ReportData {
         StringBuilder result = new StringBuilder();
         List<Integer> timeDifference = timeDifference(student);
 
-        result.append(student.getFullName()).append(" ").
+        result.append(student.getFirstName()).append(" ").append(student.getLastName()).append(" ").
                 append("(").append(student.getCurriculum().getTitle()).append(") ");
 
         if (hoursRemaining <= 0) {
@@ -87,7 +87,8 @@ public class ReportGenerator extends ReportData {
         StringBuilder result = new StringBuilder();
         List<Integer> timeDifference = timeDifference(student);
 
-        result.append(student.getFullName()).append("\n").append(WorkingHoursCalculator.START.getHour()).append("-").
+        result.append(student.getFirstName()).append(" ").append(student.getLastName()).append("\n").
+                append(WorkingHoursCalculator.START.getHour()).append("-").
                 append(WorkingHoursCalculator.END.getHour()).append(" working hours\n").
                 append(student.getCurriculum().getTitle()).append("\n").append(student.getCurriculum().getHours()).
                 append(" hours total\nStart: ").append(student.getStartingDate().format(formatter)).
