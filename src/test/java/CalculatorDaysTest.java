@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
+import java.util.List;
 
 public class CalculatorDaysTest {
 
@@ -44,7 +45,7 @@ public class CalculatorDaysTest {
 
     @Test
     public void daysShouldRemainAsZero() {
-        ArrayList<Integer> checker = new ArrayList<>();
+        List<Integer> checker = new ArrayList<>();
         checker.add(0, 0);
         checker.add(1, 7);
         Assert.assertEquals(calculator.calculateDaysAndHours(7, 0), checker);

@@ -54,7 +54,7 @@ public class ReportGenerator extends ReportData {
 
     private String generateShortReport(Student student, int hoursRemaining) {
         StringBuilder result = new StringBuilder();
-        ArrayList<Integer> timeDifference = timeDifference(student);
+        List<Integer> timeDifference = timeDifference(student);
 
         result.append(student.getFullName()).append(" ").
                 append("(").append(student.getCurriculum().getTitle()).append(") ");
@@ -85,7 +85,7 @@ public class ReportGenerator extends ReportData {
 
     private String generateFullReport(Student student, int hoursRemaining) {
         StringBuilder result = new StringBuilder();
-        ArrayList<Integer> timeDifference = timeDifference(student);
+        List<Integer> timeDifference = timeDifference(student);
 
         result.append(student.getFullName()).append("\n").append(WorkingHoursCalculator.START.getHour()).append("-").
                 append(WorkingHoursCalculator.END.getHour()).append(" working hours\n").
@@ -131,7 +131,7 @@ public class ReportGenerator extends ReportData {
         return required - done;
     }
 
-    private ArrayList<Integer> timeDifference(Student student) {
+    private List<Integer> timeDifference(Student student) {
         int hoursDoneOnReportDay = calculator.getWorkingHoursDifference(getReportTime(),
                 getFinishDateTime(student).toLocalTime());
 

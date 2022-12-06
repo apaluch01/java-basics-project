@@ -3,12 +3,13 @@ package com.griddynamics.qa.course.calculator.objects;
 import lombok.Getter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 public class Curriculum {
 
     private String title;
-    private ArrayList<Course> courses;
+    private List<Course> courses;
     private int hours;
 
     public Curriculum(CurriculumBuilder builder) {
@@ -17,7 +18,7 @@ public class Curriculum {
         this.hours = getFullDuration(courses);
     }
     
-    private int getFullDuration(ArrayList<Course> courses) {
+    private int getFullDuration(List<Course> courses) {
         int sum = 0;
 
         for (Course course : courses) {
@@ -30,7 +31,7 @@ public class Curriculum {
     @Getter
     public static class CurriculumBuilder {
         private String title;
-        private ArrayList<Course> courses = new ArrayList<Course>();
+        private List<Course> courses = new ArrayList<>();
         private int hours;
 
         public CurriculumBuilder title(final String title) {

@@ -4,6 +4,7 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 
 import static java.lang.Math.abs;
 import static java.time.temporal.ChronoUnit.DAYS;
@@ -49,8 +50,8 @@ public class WorkingHoursCalculator {
         return (int) abs(difference);
     }
 
-    public ArrayList<Integer> calculateDaysAndHours(int hours, int days) {
-        ArrayList<Integer> result = new ArrayList<Integer>();
+    public List<Integer> calculateDaysAndHours(int hours, int days) {
+        List<Integer> result = new ArrayList<>();
 
         if (hours == 8) {
             hours = 0;
