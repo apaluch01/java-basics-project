@@ -44,6 +44,10 @@ public class ReportGenerator extends ReportData {
             for (Student student : getStudents()) {
                 hoursRemaining = hoursRemaining(student);
 
+                if (student.getStartingDate().isAfter(getReportDateTime())) {
+                    continue;
+                }
+
                 result.add(generateShortReport(student, hoursRemaining));
             }
         }
@@ -51,6 +55,11 @@ public class ReportGenerator extends ReportData {
             System.out.println(getFullReportString());
             for (Student student : getStudents()) {
                 hoursRemaining = hoursRemaining(student);
+
+                if (student.getStartingDate().isAfter(getReportDateTime())) {
+                    continue;
+                }
+
                 result.add(generateFullReport(student, hoursRemaining));
             }
         }
