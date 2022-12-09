@@ -9,13 +9,19 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ReportGenerator extends ReportData {
 
     WorkingHoursCalculator calculator = new WorkingHoursCalculator();
+    private boolean isShort = false;
 
     public ReportGenerator(String stringDateTime, String type) {
-        loadReportData(stringDateTime, type);
+        if (Objects.equals(type, "0") || Objects.equals(type, "")) {
+            isShort = true;
+        }
+
+        loadReportData(stringDateTime);
     }
 
     private String getShortReportString() {
@@ -33,7 +39,7 @@ public class ReportGenerator extends ReportData {
         List<String> result = new ArrayList<>();
         int hoursRemaining;
 
-        if (isShort()) {
+        if (isShort) {
             System.out.println(getShortReportString());
             for (Student student : getStudents()) {
                 hoursRemaining = hoursRemaining(student);

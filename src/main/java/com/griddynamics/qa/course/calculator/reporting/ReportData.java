@@ -21,19 +21,14 @@ public class ReportData {
     private LocalDateTime reportDateTime;
     private LocalDate reportDate;
     private LocalTime reportTime;
-    private boolean isShort = false;
+
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
-    public void loadReportData(String stringDateTime, String type) {
+    public void loadReportData(String stringDateTime) {
         reportDateTime = LocalDateTime.parse(stringDateTime, formatter);
 
         this.reportDate = reportDateTime.toLocalDate();
         this.reportTime = reportDateTime.toLocalTime();
-
-
-        if (Objects.equals(type, "0") || Objects.equals(type, "")) {
-            isShort = true;
-        }
 
         Course course1 = new Course("Java", 16);
         Course course2 = new Course("JBCD", 24);
