@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
+import java.util.Arrays;
 
 public class ReportGeneratorTest {
 
@@ -38,11 +39,11 @@ public class ReportGeneratorTest {
         Assert.assertEquals(generator.hoursRemaining(student2), 0);
     }
 
-    @Test
-    public void studentsNotYetLearningShouldntBeReported() {
+    @Test (dataProvider = "student-two", dataProviderClass = GeneratorDataProvider.class)
+    public void studentsNotYetLearningShouldntBeReported(Student student2) {
         generator = new ReportGenerator("2020-06-01 09:59", "");
 
-        Assert.assertTrue(generator.getReport().isEmpty());
+        Assert.assertTrue(generator.getReport(Arrays.asList(student2)).isEmpty());
     }
 
     @Test (expectedExceptions = {DateTimeParseException.class}, dataProvider = "wrong-date-format",

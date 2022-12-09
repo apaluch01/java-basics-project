@@ -1,20 +1,24 @@
 package com.griddynamics.qa.course.calculator.object;
 
+import lombok.Data;
 import lombok.Getter;
+import lombok.NonNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
+@Data
 public class Curriculum {
 
+    @NonNull
     private final String title;
+    @NonNull
     private final List<Course> courses;
     private final int hours;
 
-    public Curriculum(CurriculumBuilder builder) {
-        this.title = builder.title;
-        this.courses = builder.courses;
+    public Curriculum(String title, List<Course> courses) {
+        this.title = title;
+        this.courses = courses;
         this.hours = getFullDuration(courses);
     }
     
@@ -26,31 +30,5 @@ public class Curriculum {
         }
 
         return sum;
-    }
-
-    @Getter
-    public static class CurriculumBuilder {
-        private String title;
-        private List<Course> courses = new ArrayList<>();
-        private int hours;
-
-        public CurriculumBuilder title(final String title) {
-            this.title = title;
-            return this;
-        }
-
-        public CurriculumBuilder courses(final Course course) {
-            this.courses.add(course);
-            return this;
-        }
-
-        public CurriculumBuilder hours(final int hours) {
-            this.hours = hours;
-            return this;
-        }
-
-        public Curriculum build() {
-            return new Curriculum(this);
-        }
     }
 }

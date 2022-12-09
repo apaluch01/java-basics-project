@@ -1,4 +1,4 @@
-import com.griddynamics.qa.course.calculator.WorkingHoursCalculator;
+import com.griddynamics.qa.course.calculator.service.WorkingHoursCalculator;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

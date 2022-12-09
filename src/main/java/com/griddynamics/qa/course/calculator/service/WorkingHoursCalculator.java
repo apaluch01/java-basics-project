@@ -1,4 +1,4 @@
-package com.griddynamics.qa.course.calculator;
+package com.griddynamics.qa.course.calculator.service;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -44,8 +44,6 @@ public class WorkingHoursCalculator {
             }
             courseDays = courseDays.plusDays(1);
         }
-
-
 
         return (int) abs(difference);
     }

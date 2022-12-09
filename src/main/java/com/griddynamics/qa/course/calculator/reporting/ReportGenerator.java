@@ -1,50 +1,52 @@
 package com.griddynamics.qa.course.calculator.reporting;
 
-import com.griddynamics.qa.course.calculator.WorkingHoursCalculator;
+import com.griddynamics.qa.course.calculator.service.WorkingHoursCalculator;
 import com.griddynamics.qa.course.calculator.object.Student;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class ReportGenerator extends ReportData {
+public class ReportGenerator {
 
-    WorkingHoursCalculator calculator = new WorkingHoursCalculator();
+    private final WorkingHoursCalculator calculator = new WorkingHoursCalculator();
     private boolean isShort = false;
+
+    private final LocalDateTime reportTime;
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
     public ReportGenerator(String stringDateTime, String type) {
         if (Objects.equals(type, "0") || Objects.equals(type, "")) {
             isShort = true;
         }
 
-        loadReportData(stringDateTime);
+        reportTime = LocalDateTime.parse(stringDateTime, FORMATTER);
     }
 
     private String getShortReportString() {
-        return "Short report as of " + getReportDate().toString() + " " +
-                getReportTime().toString();
+        return "Short report as of " + reportTime;
     }
 
     private String getFullReportString() {
-        return "Full report as of " + getReportDate().toString() + " " +
-                getReportTime().toString();
+        return "Full report as of " + reportTime;
     }
 
 
-    public List<String> getReport() {
+    public List<String> getReport(List<Student> students) {
         List<String> result = new ArrayList<>();
         int hoursRemaining;
 
         if (isShort) {
             System.out.println(getShortReportString());
-            for (Student student : getStudents()) {
+            for (Student student : students) {
                 hoursRemaining = hoursRemaining(student);
 
-                if (student.getStartingDate().isAfter(getReportDateTime())) {
+                if (student.getStartingDate().isAfter(reportTime)) {
                     continue;
                 }
 
@@ -53,10 +55,10 @@ public class ReportGenerator extends ReportData {
         }
         else {
             System.out.println(getFullReportString());
-            for (Student student : getStudents()) {
+            for (Student student : students) {
                 hoursRemaining = hoursRemaining(student);
 
-                if (student.getStartingDate().isAfter(getReportDateTime())) {
+                if (student.getStartingDate().isAfter(reportTime)) {
                     continue;
                 }
 
@@ -106,8 +108,8 @@ public class ReportGenerator extends ReportData {
                 append(WorkingHoursCalculator.START.getHour()).append("-").
                 append(WorkingHoursCalculator.END.getHour()).append(" working hours\n").
                 append(student.getCurriculum().getTitle()).append("\n").append(student.getCurriculum().getHours()).
-                append(" hours total\nStart: ").append(student.getStartingDate().format(getFormatter())).
-                append("\nFinish: ").append(getFinishDateTime(student).format(getFormatter())).append("\n");
+                append(" hours total\nStart: ").append(student.getStartingDate().format(FORMATTER)).
+                append("\nFinish: ").append(getFinishDateTime(student).format(FORMATTER)).append("\n");
 
         if (hoursRemaining <= 0) {
             result.append("Training completed. ");
@@ -136,11 +138,10 @@ public class ReportGenerator extends ReportData {
     public int hoursRemaining(Student student) {
         int required = student.getCurriculum().getHours();
 
-        LocalDate reportDate = getReportDate();
         LocalDate startDate = student.getStartingDate().toLocalDate();
 
-        int hoursDoneOnReportDay = calculator.getCurrentDayHours(getReportTime());
-        int daysDoneToReportDay = calculator.getWorkingDaysDifference(reportDate, startDate);
+        int hoursDoneOnReportDay = calculator.getCurrentDayHours(reportTime.toLocalTime());
+        int daysDoneToReportDay = calculator.getWorkingDaysDifference(reportTime.toLocalDate(), startDate);
 
         int done = hoursDoneOnReportDay + (daysDoneToReportDay * WorkingHoursCalculator.HOURS);
 
@@ -148,10 +149,10 @@ public class ReportGenerator extends ReportData {
     }
 
     private List<Integer> timeDifference(Student student) {
-        int hoursDoneOnReportDay = calculator.getWorkingHoursDifference(getReportTime(),
+        int hoursDoneOnReportDay = calculator.getWorkingHoursDifference(reportTime.toLocalTime(),
                 getFinishDateTime(student).toLocalTime());
 
-        int daysDoneToReportDay = calculator.getWorkingDaysDifference(getReportDate(),
+        int daysDoneToReportDay = calculator.getWorkingDaysDifference(reportTime.toLocalDate(),
                 getFinishDateTime(student).toLocalDate());
 
         return calculator.calculateDaysAndHours(hoursDoneOnReportDay, daysDoneToReportDay);
